@@ -1,0 +1,366 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Mobile-First Responsive Design */
+@layer utilities {
+  /* Container responsive spacing */
+  .container-responsive {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Text responsive sizing */
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm;
+  }
+
+  .text-responsive-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .text-responsive-base {
+    @apply text-base sm:text-lg;
+  }
+
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl lg:text-2xl;
+  }
+
+  .text-responsive-xl {
+    @apply text-xl sm:text-2xl lg:text-3xl;
+  }
+
+  /* Grid responsive layouts */
+  .grid-responsive-1-2 {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6;
+  }
+
+  .grid-responsive-1-2-3 {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6;
+  }
+
+  .grid-responsive-1-2-4 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6;
+  }
+
+  /* Spacing responsive */
+  .space-responsive {
+    @apply space-y-4 md:space-y-6;
+  }
+
+  .space-responsive-lg {
+    @apply space-y-6 md:space-y-8 lg:space-y-12;
+  }
+
+  /* Padding responsive */
+  .p-responsive {
+    @apply p-4 md:p-6 lg:p-8;
+  }
+
+  .p-responsive-sm {
+    @apply p-2 md:p-4 lg:p-6;
+  }
+
+  /* Mobile-friendly buttons */
+  .btn-mobile {
+    @apply h-12 md:h-10 text-sm md:text-base;
+  }
+
+  .btn-mobile-sm {
+    @apply h-10 md:h-8 text-xs md:text-sm;
+  }
+
+  /* Mobile-friendly forms */
+  .input-mobile {
+    @apply h-12 md:h-10 text-base md:text-sm;
+  }
+
+  /* Card responsive */
+  .card-mobile {
+    @apply p-4 md:p-6 rounded-lg md:rounded-xl;
+  }
+
+  /* Table responsive */
+  .table-mobile {
+    @apply overflow-x-auto;
+  }
+
+  .table-mobile table {
+    @apply min-w-full;
+  }
+
+  /* Tab responsive */
+  .tabs-mobile {
+    @apply overflow-x-auto;
+  }
+
+  .tabs-mobile .tab-trigger {
+    @apply min-w-0 flex-shrink-0 px-2 py-1 text-xs md:px-4 md:py-2 md:text-sm;
+  }
+
+  /* Image responsive */
+  .img-responsive {
+    @apply w-full h-auto object-cover;
+  }
+
+  .aspect-responsive {
+    @apply aspect-square md:aspect-video;
+  }
+
+  /* Navigation responsive */
+  .nav-mobile {
+    @apply flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4;
+  }
+
+  /* Modal responsive */
+  .modal-mobile {
+    @apply mx-4 md:mx-auto max-w-sm md:max-w-lg lg:max-w-2xl;
+  }
+
+  /* Sidebar responsive */
+  .sidebar-mobile {
+    @apply w-full md:w-64 lg:w-80;
+  }
+
+  /* Touch targets */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Safe area for mobile devices */
+  .safe-area {
+    @apply pb-safe-bottom pl-safe-left pr-safe-right;
+  }
+
+  /* Hide on mobile */
+  .hide-mobile {
+    @apply hidden md:block;
+  }
+
+  /* Show only on mobile */
+  .show-mobile {
+    @apply block md:hidden;
+  }
+
+  /* Mobile-first flex layouts */
+  .flex-mobile-col {
+    @apply flex flex-col md:flex-row;
+  }
+
+  .flex-mobile-row {
+    @apply flex flex-row md:flex-col;
+  }
+
+  /* Responsive widths */
+  .w-mobile-full {
+    @apply w-full md:w-auto;
+  }
+
+  .w-mobile-auto {
+    @apply w-auto md:w-full;
+  }
+}
+
+/* Custom scrollbar for mobile */
+@layer base {
+  /* Webkit scrollbar styling */
+  ::-webkit-scrollbar {
+    @apply w-1 h-1;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-500;
+  }
+
+  /* Mobile viewport handling */
+  html {
+    @apply text-base;
+    /* Prevent zoom on input focus in iOS Safari */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply min-h-screen bg-white dark:bg-gray-900;
+    /* Prevent rubber band scrolling on iOS */
+    overscroll-behavior: none;
+  }
+
+  /* Mobile-friendly form inputs */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="search"],
+  textarea,
+  select {
+    @apply text-base;
+    /* Prevent zoom on iOS */
+    font-size: 16px;
+  }
+
+  @media (min-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="search"],
+    textarea,
+    select {
+      font-size: 14px;
+    }
+  }
+
+  /* Mobile touch improvements */
+  button,
+  [role="button"],
+  input[type="submit"],
+  input[type="button"] {
+    @apply touch-target;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Dark mode improvements for mobile */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+    }
+  }
+
+  /* Mobile navigation improvements */
+  .mobile-nav {
+    @apply fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 p-2 md:relative md:border-t-0 md:p-0 md:bg-transparent md:dark:bg-transparent;
+  }
+
+  /* Mobile-friendly animations */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Print styles */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+
+    body {
+      @apply text-black bg-white;
+    }
+  }
+}
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 45%;
+
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 262 83% 58%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 262 83% 58%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
